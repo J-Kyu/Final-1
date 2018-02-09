@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Dodge If you can/Scene/Main.unity
-    guid: 6751512939af7204d9743af878175fe3
-  - enabled: 1
     path: Assets/_Dodge If you can/Scene/Splash.unity
     guid: d503a118f4c909040968573fcf83d9de
+  - enabled: 1
+    path: Assets/_Dodge If you can/Scene/Main.unity
+    guid: 6751512939af7204d9743af878175fe3

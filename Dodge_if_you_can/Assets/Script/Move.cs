@@ -18,7 +18,25 @@ public class Move : MonoBehaviour {
 
 	}
 
-
+   public void foward()
+    {
+        rb.velocity = (transform.forward * speed + transform.TransformDirection(0, 1, 0) * (gravity));//in air the graivity works as (-speed/80)
+    }
+   public void   backward()
+    {
+        if (rb.velocity.x <= 0)
+        {
+            rb.velocity = (-transform.forward * speed / 2);//going back makes half speed slow   
+        }
+    }
+   public void left()
+    {
+        transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * handle_speed, Space.World);
+    }
+   public void right()
+    {
+        transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * handle_speed, Space.World);
+    }
     private void Update()
     {
         reverse_speed = speed;
@@ -26,27 +44,24 @@ public class Move : MonoBehaviour {
         // rb.velocity = transform.up * gravity;
           
         if (Input.GetKey(KeyCode.UpArrow))
-        {   
-            rb.velocity = (transform.forward*speed+transform.TransformDirection(0,1,0) *(gravity));//in air the graivity works as (-speed/80)
+        {
+            foward();
 
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            
 
-                if(rb.velocity.x<=0 ){
-                rb.velocity = (-transform.forward * speed/2);//going back makes half speed slow   
-             }
+            backward();
 
           
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * handle_speed, Space.World);
+            left();
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * handle_speed, Space.World);
+            right();
         }
 
        //In air, i should probably use layer or tag to assign the velocity declining to 0.
