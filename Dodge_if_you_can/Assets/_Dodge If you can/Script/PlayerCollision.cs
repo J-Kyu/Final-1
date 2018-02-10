@@ -22,11 +22,11 @@ public class PlayerCollision : MonoBehaviour {
         audioSource.Play();
         // Debug.LogFormat("wow");
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             var par = Instantiate(particle);
             par.transform.position = transform.position;
             playerHp.playerLastingTime=0.0f;

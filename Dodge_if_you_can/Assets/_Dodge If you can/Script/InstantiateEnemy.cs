@@ -21,7 +21,7 @@ public class InstantiateEnemy : MonoBehaviour {
         {
             var enemy = Instantiate(enemyPrefabs,transform);
             var tr= enemy.transform;
-            tr.position = new Vector3(player.transform.position.x+radius * Mathf.Sin(theta), 0.0f,player.transform.position.z+ radius * Mathf.Cos(theta));
+            tr.position = new Vector3(player.transform.position.x+radius * Mathf.Sin(theta), 0f,player.transform.position.z+ radius * Mathf.Cos(theta));
             
             lastLogTime = Time.time;
         }

@@ -74,7 +74,7 @@ public class Instantiate : MonoBehaviour {
                 // int x = Random.Range(1, 11); //
                  var newgameObject = Instantiate(obstacle, transform);
                  var obstacle_tr = newgameObject.GetComponentInChildren<Transform>();
-                 obstacle_tr.transform.localPosition = new Vector3(array[j], -0.95f, i);
+                 obstacle_tr.transform.localPosition = new Vector3(array[j], -0.45f, i);
                 
 
             }

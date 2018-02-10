@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 
 public class Move : MonoBehaviour {
-    public float speed = 1.0f;
+    public float acel = 800.0f;
 	public float handle_speed=3.0f;
 	private Rigidbody rb;
 	public float jumpheight=1.0f;
     public float gravity = -0.98f;
     public float reverse_speed;
+    public float radius=100;
 
 
-   
 
-	// Use this for initialization
-	private void Start () {
+
+    // Use this for initialization
+    private void Start () {
         //reverse_speed = speed;
 		rb = GetComponent<Rigidbody>();
 
@@ -20,18 +21,21 @@ public class Move : MonoBehaviour {
 
    public void foward()
     {
-        rb.velocity = (transform.forward * speed + transform.TransformDirection(0, 1, 0) * (gravity));//in air the graivity works as (-speed/80)
+        //speed = 10.0f;
+        // rb.velocity = (transform.forward * speed);// + transform.TransformDirection(0, 1, 0) * (gravity));//in air the graivity works as (-speed/80)
+        rb.AddForce((transform.forward * acel*Time.deltaTime));
+        Debug.LogFormat("SPeed.x:{0}",rb.velocity);
     }
    public void   backward()
     {
-        if (rb.velocity.x <= 0)
-        {
-            rb.velocity = (-transform.forward * speed / 2);//going back makes half speed slow   
-        }
+        rb.AddForce((-transform.forward * (acel-100) * Time.deltaTime));
+
+
+
     }
    public void left()
     {
-        transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * handle_speed, Space.World);
+        transform.Rotate(new Vector3(0, -1 * Time.deltaTime * handle_speed, 0), Space.World );
     }
    public void right()
     {
@@ -39,8 +43,9 @@ public class Move : MonoBehaviour {
     }
     private void Update()
     {
-        reverse_speed = speed;
 
+      
+  //  Debug.LogFormat("Speed:{0}",rb.velocity.magnitude);
         // rb.velocity = transform.up * gravity;
           
         if (Input.GetKey(KeyCode.UpArrow))
@@ -66,57 +71,40 @@ public class Move : MonoBehaviour {
 
        //In air, i should probably use layer or tag to assign the velocity declining to 0.
 
-        Debug.LogFormat("{0}", rb.velocity.x);
-
+       
         if (Input.GetKey(KeyCode.R)){
             transform.position = new Vector3(transform.position.x, 2.0f, transform.position.z);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-
+          
         Vector3 movedPosition = transform.position;
 
-        if (movedPosition.x > 24)
-        {
-            movedPosition.x = 24;
-        }
-
-
-        if (movedPosition.x < -24)
-        {
-            movedPosition.x = -24;
-        }
-
-        if (movedPosition.z > 24)
-        {
-            movedPosition.z = 24;
-        }                                   //movedPosition.z=Mathf.Clamp(movedPosition.z,-50,+50);
-        if (movedPosition.z < -24)
-        {
-            movedPosition.z = -24;
-        }
-        transform.position = movedPosition;
-
         
-    
+        movedPosition = Vector3.ClampMagnitude(movedPosition, radius);
+        transform.position =movedPosition;
+
+
+
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
        
 
 
-                if (other.CompareTag("Untagged"))
+                if (other.gameObject.CompareTag("Untagged"))
                 {
                     rb.velocity = new Vector3(0.0f, 0.0f, 0.0f);
-                    speed = 0.0f;
+                    acel = 0.0f;
                     reverse_speed = 0.0f;
-                    rb.velocity = (transform.TransformDirection(0, 1, 0) * (gravity));//in air the graivity works as (-speed/80)
+                   // rb.velocity = (transform.TransformDirection(0, 1, 0) * (gravity));//in air the graivity works as (-speed/80)
 
                 }
             }
         }
-
+       
     
 
 

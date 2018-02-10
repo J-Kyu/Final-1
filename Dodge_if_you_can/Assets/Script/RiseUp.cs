@@ -24,14 +24,19 @@ public class RiseUp : MonoBehaviour {
     public float shake_intensity = 0.01f;       //origin value is 0.01f
     public float shake_decay = 0.002f;          //origin value is 0.002f
     public float shake_power = 0.2f;            //origin value is 0.2f
+    private Rigidbody rb;
     // Use this for initialization
     void Start () {
         originRotation = transform.rotation;
-	}
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
         shakingLoadingTime += Time.deltaTime;
+       
+        
         //Debug.LogFormat("time:{0}", Time.time);
         if (shakingLoadingTime < shakingTime)
         {
@@ -40,13 +45,22 @@ public class RiseUp : MonoBehaviour {
             
 
         }
-        if (shakingLoadingTime > shakingTime && shakingLoadingTime<shakingTime+1)
+        if (shakingLoadingTime > shakingTime && shakingLoadingTime<=shakingTime+1)
         {
             RockUp();
-          
+                    
         }
-        if (shakingLoadingTime>shakingTime+1+10)
-        RockDown();
+        if (shakingLoadingTime>shakingTime+1&&shakingLoadingTime<=shakingTime+1+10)
+        {
+           // rb.isKinematic = false;
+        }
+        if (shakingLoadingTime > shakingTime + 1 + 10)
+        {
+            //rb.isKinematic = true;
+            RockDown();
+
+        }
+       
 
 	}
 
@@ -55,7 +69,7 @@ public class RiseUp : MonoBehaviour {
     }
 
     void RockUp(){
-        transform.Translate(new Vector3(0, 1 * Time.deltaTime, 0));
+        transform.Translate(new Vector3(0, 0.9f * Time.deltaTime, 0));
     }
 
     void EarthQuake()

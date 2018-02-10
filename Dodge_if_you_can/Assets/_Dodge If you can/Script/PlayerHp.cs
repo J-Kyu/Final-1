@@ -62,7 +62,7 @@ public class PlayerHp : MonoBehaviour {
 		 hpText.text = hp.ToString();
         if (hp <= 0)
         {
-            move.speed = 0.0f;
+            move.acel = 0.0f;
             hp = 0;
 
             EndGame();
