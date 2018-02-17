@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4233757925932500}
   - component: {fileID: 33663174926436390}
   - component: {fileID: 23615942147977224}
-  - component: {fileID: 95220907780647312}
   - component: {fileID: 54829934982776140}
+  - component: {fileID: 114678342987668000}
+  - component: {fileID: 65958021161953334}
   m_Layer: 0
   m_Name: 02_barkas
   m_TagString: Untagged
@@ -98,22 +99,30 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!95 &95220907780647312
-Animator:
-  serializedVersion: 3
+--- !u!65 &65958021161953334
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1823945754486832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1392774, y: 0.5091765, z: 0.5244949}
+  m_Center: {x: -1.2902657e-10, y: 0.22256672, z: 0.0021647066}
+--- !u!114 &114678342987668000
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1823945754486832}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0b6ef67e81fe4844f95e508eccc49fd5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfcefc76515d424392f38b09ff473ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs: {fileID: 1765880161832304, guid: 513b26c5187f435409c127c0f6dea125,
+    type: 2}

@@ -262,6 +262,9 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="ArchimedsLab">
+      <HintPath>Assets/FloatingEntities/Scripts/ArchimedsLab.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/Users/User/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -282,9 +285,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/User/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="ArchimedsLab">
-      <HintPath>Assets/FloatingEntities/Scripts/ArchimedsLab.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -320,8 +320,9 @@
     <Compile Include="Assets\FloatingEntities\Scripts\SplashGenerator.cs" />
     <Compile Include="Assets\FloatingEntities\Scripts\Tools\Proxies.cs" />
     <Compile Include="Assets\FloatingEntities\Scripts\WakeGenerator.cs" />
-    <Compile Include="Assets\InstantiateShip.cs" />
     <Compile Include="Assets\Script\Instantiate.cs" />
+    <Compile Include="Assets\Script\InstantiateShip.cs" />
+    <Compile Include="Assets\Script\InstantiateTarget.cs" />
     <Compile Include="Assets\Script\Move.cs" />
     <Compile Include="Assets\Script\Practice.cs" />
     <Compile Include="Assets\Script\RiseUp.cs" />
